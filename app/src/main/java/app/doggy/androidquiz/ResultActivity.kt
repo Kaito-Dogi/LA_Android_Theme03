@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_result.*
 
@@ -20,13 +21,17 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        /*
+        今回の結果とランキングの表示。
+         */
+
         //ランキングを記録するSharedPreferencesをインスタンス化。
         val rankingStore: SharedPreferences = getSharedPreferences("RankingStore", Context.MODE_PRIVATE)
 
         //書き込みを行う処理を変数に代入。
         val rankingEditor = rankingStore.edit()
 
-        //値を受け取る。
+        //正解数を受け取る。
         val correctCount = intent.getIntExtra("correctCount", 0)
 
         //正解数を表示する。
@@ -62,6 +67,22 @@ class ResultActivity : AppCompatActivity() {
             rankingDisplay.text = "圏外..."
 
         }
+
+        /*
+        問題と解答の表示。
+         */
+
+        //問題を受け取る。
+        val questions = intent.getStringArrayExtra("questions")
+
+        //解答を受け取る。
+        val answers = intent.getStringArrayExtra("answers")
+
+        //出題順を決める配列を受け取る。
+        val questionOrder = intent.getIntArrayExtra("questionOrder")
+
+        //RecyclerViewを使う。
+
     }
 
     //順位を反映する処理。

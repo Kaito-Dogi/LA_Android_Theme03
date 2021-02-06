@@ -217,10 +217,21 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/questionDisplay"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:layout_weight="1" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingLeft="8dp"
+            android:text="問題と答え"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
 </LinearLayout>

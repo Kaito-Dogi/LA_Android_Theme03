@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //numsForQuestionに初期値を代入する。
+        //questionOrderに初期値を代入する。
         for (i in questionOrder.indices) {
             questionOrder[i] = i
         }
