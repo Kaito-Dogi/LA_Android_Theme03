@@ -60,6 +60,7 @@ class ResultActivity : AppCompatActivity() {
         } else {
             //今回の順位を表示する。
             rankingDisplay.text = "圏外..."
+
         }
     }
 
@@ -91,5 +92,6 @@ class ResultActivity : AppCompatActivity() {
 
         //今回の順位を表示する。
         rankingDisplay.text = rankingKeys[index]
+
     }
 }

@@ -11,15 +11,29 @@ class MainActivity : AppCompatActivity() {
     //問題文の配列。
     val questions: Array<String> = arrayOf(
         "Androidアプリを開発するときのプログラミング言語は何でしょう？",
+        "Androidアプリを開発するときのソフトは何でしょう？",
+        "画像を表示させるViewは何でしょう？",
+        "文字を表示させるViewは何でしょう？",
         "値を変えられる変数を宣言するときに使う命令は何でしょう？",
         "文字列を扱うクラスは何でしょう？",
+        "View間の制約をもとにViewを配置していくレイアウトは何でしょう？",
+        "変数以外で、情報をAndroid端末に保存する仕組みは何でしょう？",
+        "文字を入力することができるViewは何でしょう？",
+        "LinearLayoutで縦方向にViewを並べるとき、orientationアトリビュートの値は何でしょう？"
     )
 
     //解答の配列。
     val answers: Array<String> = arrayOf(
         "Kotlin",
+        "AndroidStudio",
+        "ImageView",
+        "TextView",
         "var",
-        "String"
+        "String",
+        "ConstraintLayout",
+        "SharedPreferences",
+        "EditText",
+        "vertical",
     )
 
     //出題順を決める配列。
@@ -39,17 +53,6 @@ class MainActivity : AppCompatActivity() {
         for (i in questionOrder.indices) {
             questionOrder[i] = i
         }
-
-        //問題をシャッフルする。
-        questionOrder.shuffle()
-
-        //問題の出題順を確認。
-        for (i in questionOrder.indices) {
-            Log.d("questionOrder", questionOrder[i].toString())
-        }
-
-        //問題を表示。
-        setQuestion()
 
         //ボタンをタップした時の処理。
         answerButton.setOnClickListener {
@@ -87,12 +90,26 @@ class MainActivity : AppCompatActivity() {
                     //出題順を決める配列を渡す準備。
                     intent.putExtra("questionOrder", questionOrder)
 
+                    //結果を表示。
                     startActivity(intent)
 
-                    finish()
+                    //初期化。
+                    status = 0
+                    correctCount = 0
+                    answerTextView.setText("")
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //問題をシャッフルする。
+        questionOrder.shuffle()
+
+        //問題を表示。
+        setQuestion()
     }
 
     //問題を表示する処理。
